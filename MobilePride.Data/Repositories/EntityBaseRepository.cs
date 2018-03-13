@@ -39,10 +39,10 @@ namespace MobilePride.Data.Repositories
             }
             return query;
         }
-        public T GetSingle(Guid id)
-        {
-            return GetAll().FirstOrDefault(x => x.ID == id);
-        }
+        //public T GetSingle(Guid id)
+        //{
+        //    return GetAll().FirstOrDefault(x => x.ID == id);
+        //}
         public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             return DbContext.Set<T>().Where(predicate).Where(x => x.IsDeleted == false);
@@ -53,8 +53,6 @@ namespace MobilePride.Data.Repositories
             entity.IsDeleted = false;
             entity.CreatedDate = DateTime.UtcNow;
             entity.ModifiedDate = DateTime.UtcNow;
-            entity.CreatedDateUnix = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            entity.ModifiedDateUnix = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             //DbEntityEntry dbEntityEntry = DbContext.Entry<T>(entity);
             DbContext.Set<T>().Add(entity);
         }
@@ -66,8 +64,6 @@ namespace MobilePride.Data.Repositories
                 entity.IsDeleted = false;
                 entity.CreatedDate = DateTime.UtcNow;
                 entity.ModifiedDate = DateTime.UtcNow;
-                entity.CreatedDateUnix = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-                entity.ModifiedDateUnix = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
                 //DbEntityEntry dbEntityEntry = DbContext.Entry<T>(entity);
                 DbContext.Set<T>().Add(entity);
             } 
@@ -75,12 +71,10 @@ namespace MobilePride.Data.Repositories
 
         public virtual void Edit(T oldEntity, T newEntity)
         {
-            newEntity.KeyID = oldEntity.KeyID;
+            newEntity.KeyId = oldEntity.KeyId;
             newEntity.IsDeleted = false;
             newEntity.CreatedDate = oldEntity.CreatedDate;
             newEntity.ModifiedDate = DateTime.UtcNow;
-            newEntity.CreatedDateUnix = oldEntity.CreatedDateUnix;
-            newEntity.ModifiedDateUnix = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             DbContext.Entry(oldEntity).CurrentValues.SetValues(newEntity); 
         }
       
@@ -93,11 +87,11 @@ namespace MobilePride.Data.Repositories
         }
         #region Get Data By Id..
         //to get data by id
-        public virtual T GetById(Guid entity)
-        {
-            var abc = DbContext.Set<T>().FirstOrDefault(x => (x.ID == entity) && (x.IsDeleted == false));
-            return abc;
-        }
+        //public virtual T GetById(Guid entity)
+        //{
+        //    var abc = DbContext.Set<T>().FirstOrDefault(x => (x.ID == entity) && (x.IsDeleted == false));
+        //    return abc;
+        //}
         #endregion
     }
 }

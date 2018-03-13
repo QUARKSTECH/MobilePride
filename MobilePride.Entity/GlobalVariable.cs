@@ -8,17 +8,16 @@ namespace MobilePride.Entity
 {
     public class GlobalVariable :IEntityBase
     {
-        public Guid ID { get; set; }
-        public long KeyID { get; set; }
-        public string Name { get; set; }
+        public long GlobalVarId { get; set; }
+        public Guid KeyId { get; set; } = Guid.NewGuid();
+        public string VariableName { get; set; }
         public string Value { get; set; }
 
         //common columns
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-        public long? CreatedDateUnix { get; set; }
-        public long? ModifiedDateUnix { get; set; }
-        public Guid? CreatedBy { get; set; }
-        public bool IsDeleted { get; set; }
+        public long? CreatedBy { get; set; }
+        public long? DeletedBy { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

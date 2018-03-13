@@ -13,9 +13,9 @@ namespace MobilePride.Entity
             this.UserRoles = new HashSet<UserRole>();
         }
 
-        public Guid ID { get; set; }
-        public long KeyID { get; set; }
-        public string Name { get; set; } 
+        public long RoleId { get; set; }
+        public Guid KeyId { get; set; } = Guid.NewGuid();
+        public string RoleName { get; set; } 
 
         //Relationship
         public virtual ICollection<UserRole> UserRoles { get; set; }
@@ -23,9 +23,8 @@ namespace MobilePride.Entity
         //common columns
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-        public long? CreatedDateUnix { get; set; }
-        public long? ModifiedDateUnix { get; set; }
-        public Guid? CreatedBy { get; set; }
-        public bool IsDeleted { get; set; }
+        public long? CreatedBy { get; set; }
+        public long? DeletedBy { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

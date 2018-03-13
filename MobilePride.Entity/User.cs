@@ -12,13 +12,11 @@ namespace MobilePride.Entity
         {
             this.UserDetails = new HashSet<UserDetail>(); 
             this.UserRoles = new HashSet<UserRole>();
-            this.ForgotPasswordLogs = new HashSet<ForgotPasswordLog>();
-            this.NotificationMessageMaps = new HashSet<NotificationMessage>();
-           
+            this.ForgotPasswordLogs = new HashSet<ForgotPasswordLog>();           
         }
 
-        public Guid ID { get; set; }
-        public long KeyID { get; set; }
+        public long UserId { get; set; }
+        public Guid KeyId { get; set; } = Guid.NewGuid();
         public string Username { get; set; }
         public string Email { get; set; }
         public string HashedPassword { get; set; }
@@ -31,17 +29,14 @@ namespace MobilePride.Entity
         public virtual ICollection<UserDetail> UserDetails { get; set; } 
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<ForgotPasswordLog> ForgotPasswordLogs { get; set; }
-        public virtual ICollection<NotificationMessage> NotificationMessageMaps { get; set; }
-        public virtual ICollection<NotificationPreference> NotificationPreferences { get; set; }
        
 
         //common columns
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-        public long? CreatedDateUnix { get; set; }
-        public long? ModifiedDateUnix { get; set; }
-        public Guid? CreatedBy { get; set; }
-        public bool IsDeleted { get; set; }
+        public long? CreatedBy { get; set; }
+        public long? DeletedBy { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
     }
 }

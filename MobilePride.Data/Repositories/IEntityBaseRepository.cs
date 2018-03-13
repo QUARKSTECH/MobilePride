@@ -11,7 +11,7 @@ namespace MobilePride.Data.Repositories
         IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties); 
         IQueryable<T> All { get; } 
         IQueryable<T> GetAll();
-        T GetSingle(Guid id); 
+        //T GetSingle(Guid id); 
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         
         void Add(T entity); 
@@ -19,6 +19,6 @@ namespace MobilePride.Data.Repositories
         void Edit(T oldEntity, T newEntity); 
         void AddRange(IEnumerable<T> entities); 
         void SoftDelete(T entity);
-        T GetById(Guid entity);
+        //T GetById(Guid entity);
     }
 }

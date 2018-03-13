@@ -8,9 +8,9 @@ namespace MobilePride.Entity
         { 
 
         }
-        public Guid ID { get; set; }
-        public long KeyID { get; set; }
-        public Guid? UserId { get; set; }
+        public long UserDetailId { get; set; }
+        public Guid KeyId { get; set; } = Guid.NewGuid();
+        public long? UserId { get; set; }
         public string FirstName { get; set; }       
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -26,13 +26,12 @@ namespace MobilePride.Entity
        
         //Relationship
         public virtual User User { get; set; }
-      
+
         //common columns
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-        public long? CreatedDateUnix { get; set; }
-        public long? ModifiedDateUnix { get; set; }
-        public Guid? CreatedBy { get; set; }
-        public bool IsDeleted { get; set; }
+        public long? CreatedBy { get; set; }
+        public long? DeletedBy { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

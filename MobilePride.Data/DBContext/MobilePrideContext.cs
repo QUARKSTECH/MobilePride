@@ -17,8 +17,7 @@ namespace MobilePride.Data
         #region Entity Sets
         public IDbSet<User> UserSet { get; set; }
         public IDbSet<Role> RoleSet { get; set; }
-        public IDbSet<County> CountySet { get; set; }
-
+        public IDbSet<UserRole> UserRoleSet { get; set; }
 
         #endregion
 
@@ -31,7 +30,8 @@ namespace MobilePride.Data
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Configurations.Add(new UserConfiguration());
-            modelBuilder.Configurations.Add(new CountyConfiguration());
+            //modelBuilder.Configurations.Add(new UserRoleConfiguration());
+            //modelBuilder.Configurations.Add(new RoleConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

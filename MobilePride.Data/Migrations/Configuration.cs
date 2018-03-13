@@ -14,9 +14,9 @@ namespace MobilePride.Data.Migrations
         protected override void Seed(MobilePrideContext context)
         {
             //// create users
-            //context.UserSet.AddOrUpdate(GenerateUsers());
+            //context.UserSet.AddOrUpdate(GenerateAdminUser());
             // create roles
-            context.RoleSet.AddOrUpdate(r => r.Name, GenerateRoles());
+            context.RoleSet.AddOrUpdate(GenerateRoles());
           
 
         }
@@ -25,60 +25,30 @@ namespace MobilePride.Data.Migrations
             var roles = new[]{
                 new Role()
                 {
-                    Name="Staff",
-                    IsDeleted=false
+                    RoleName="Staff",
+                    IsDeleted=false,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now
                 },
                  new Role()
                 {
-                    Name="Validator",
-                    IsDeleted=false
-                },
-                 new Role()
-                {
-                    Name="Admin",
-                    IsDeleted=false
+                    RoleName="Admin",
+                    IsDeleted=false,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now
                 }
             };
 
             return roles;
         }
        
-        private NotificationType[] GenerateNotificationType()
-        {
-            var notifyType = new[]{
-                new NotificationType()
-                {
-                    NotificationTypeName="Email",
-                    CreatedDate=DateTime.UtcNow,
-                    ModifiedDate=DateTime.UtcNow,
-                    IsDeleted=false
-                },
-
-                new NotificationType()
-                {
-                    NotificationTypeName="Push",
-                    CreatedDate=DateTime.UtcNow,
-                    ModifiedDate=DateTime.UtcNow,
-                    IsDeleted=false
-                },
-                new NotificationType()
-                {
-                    NotificationTypeName="SMS",
-                    CreatedDate=DateTime.UtcNow,
-                    ModifiedDate=DateTime.UtcNow,
-                    IsDeleted=false
-                }
-            };
-            return notifyType;
-        }
-
         private GlobalVariable[] GenerateGlobalVariable()
         {
             var globalVariable = new[]{
                 new GlobalVariable()
                 {
-                    Name="WebSite",
-                    Value="http://localhost:1487/",
+                    VariableName="WebSite",
+                    Value="http://localhost:61422/",
                     CreatedDate=DateTime.UtcNow,
                     ModifiedDate=DateTime.UtcNow,
                     IsDeleted=false
@@ -94,8 +64,8 @@ namespace MobilePride.Data.Migrations
             var users = new[]{
                 new User()
                 {
-                    Username="hlavergne@verdicos.com",
-                    Email="hlavergne@verdicos.com",
+                    Username="admin@yopmail.com",
+                    Email="admin@yopmail.com",
                     HashedPassword="",
                     Salt="",                    
                     IsDeleted=false,
@@ -111,11 +81,12 @@ namespace MobilePride.Data.Migrations
         {
             var dc = new MobilePrideContext();
             var userId = dc.UserSet.Find();
+            var roleId = dc.RoleSet.Find();
             var userRole = new UserRole[]{
                 new UserRole()
                 {
-                    UserId=new Guid(userId.ToString()),
-                    RoleId= new Guid("74728d55-faf5-e611-9bcb-7427ea476715"),                                      
+                    UserId=userId.UserId,
+                    RoleId= roleId.RoleId,                                      
                     IsDeleted=false,
                     CreatedDate=DateTime.UtcNow,
                     ModifiedDate=DateTime.UtcNow                                        
@@ -126,57 +97,7 @@ namespace MobilePride.Data.Migrations
         }
 
         #endregion
-        #region State
-        private State[] GenerateState()
-        {
-            var state = new[]{
-                new State()
-                {
-                    StateName="Texas",
-                    ////CountryId=1,
-                    CreatedDate=DateTime.UtcNow,
-                    ModifiedDate=DateTime.UtcNow,
-                    IsDeleted=false
-                },
-
-                new State()
-                {
-                    StateName="New Mexico",
-                    //CountryId=23,
-                    CreatedDate=DateTime.UtcNow,
-                    ModifiedDate=DateTime.UtcNow,
-                    IsDeleted=false
-                }
-            };
-            return state;
-        }
-        #endregion
-
-        #region County
-        private County[] GenerateCounty()
-        {
-            var county = new[]{
-                new County()
-                {
-                    CountyName="Pecos",
-                    ////CountryId=1,
-                    CreatedDate=DateTime.UtcNow,
-                    ModifiedDate=DateTime.UtcNow,
-                    IsDeleted=false
-                },
-
-                new County()
-                {
-                    CountyName="Reeves",
-                    //CountryId=23,
-                    CreatedDate=DateTime.UtcNow,
-                    ModifiedDate=DateTime.UtcNow,
-                    IsDeleted=false
-                }
-            };
-            return county;
-        }
-        #endregion
+        
     }
 }
 

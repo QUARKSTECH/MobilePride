@@ -4,13 +4,11 @@ namespace MobilePride.Entity
 {
     public interface IEntityBase
     {
-        Guid ID { get; set; }
-        long KeyID { get; set; }
+        Guid KeyId { get; set; }
         DateTime CreatedDate { get; set; }
         DateTime ModifiedDate { get; set; }
-        long? CreatedDateUnix { get; set; }
-        long? ModifiedDateUnix { get; set; }
-        Guid? CreatedBy { get; set; }
+        long? CreatedBy { get; set; }
+        long? DeletedBy { get; set; }
         bool IsDeleted { get; set; }
     }
 }

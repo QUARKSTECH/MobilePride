@@ -15,9 +15,9 @@ namespace MobilePride.Data.Configurations
         /// </summary>
         protected EntityBaseConfiguration()
         {
-            HasKey(e => e.ID);
-            Property(x => x.ID).HasColumnName(@"ID").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(x => x.KeyID).HasColumnName(@"KeyID").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            //HasKey(e => e.ID);
+            //Property(x => x.ID).HasColumnName(@"ID").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(x => x.KeyId).HasColumnName(@"KeyId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
             Property(x => x.CreatedBy).HasColumnName(@"CreatedBy").IsOptional() ; 
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").IsOptional().HasColumnType("datetime2");
             Property(x => x.ModifiedDate).HasColumnName(@"ModifiedDate").IsOptional().HasColumnType("datetime2");

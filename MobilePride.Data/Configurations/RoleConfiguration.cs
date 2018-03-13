@@ -1,0 +1,31 @@
+﻿using MobilePride.Entity;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MobilePride.Data.Configurations
+{
+    public class RoleConfiguration : EntityBaseConfiguration<Role>
+    {
+        public RoleConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public RoleConfiguration(string schema)
+        {
+            ToTable("Role", schema);
+            HasKey(x => x.RoleId);
+
+            Property(x => x.RoleId).HasColumnName(@"RoleId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(x => x.KeyId).HasColumnName(@"KeyId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
+            Property(x => x.RoleName).HasColumnName(@"RoleName").HasColumnType("nvarchar").IsRequired().HasMaxLength(500);
+            Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime").IsOptional();
+            Property(x => x.CreatedBy).HasColumnName(@"CreatedBy").HasColumnType("bigint").IsOptional();
+            
+        }
+    }
+}
