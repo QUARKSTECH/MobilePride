@@ -70,7 +70,7 @@ namespace MobilePride.Data.Migrations
                 c => new
                     {
                         UserId = c.Long(nullable: false, identity: true),
-                        KeyId = c.Guid(nullable: false),
+                        KeyId = c.Guid(nullable: false, defaultValueSql: "newsequentialid()"),
                         Username = c.String(nullable: false, maxLength: 100),
                         Email = c.String(nullable: false, maxLength: 200),
                         HashedPassword = c.String(nullable: false, maxLength: 200),

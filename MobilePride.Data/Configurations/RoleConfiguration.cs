@@ -23,7 +23,6 @@ namespace MobilePride.Data.Configurations
             Property(x => x.RoleId).HasColumnName(@"RoleId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(x => x.KeyId).HasColumnName(@"KeyId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
             Property(x => x.RoleName).HasColumnName(@"RoleName").HasColumnType("nvarchar").IsRequired().HasMaxLength(500);
-            Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime").IsOptional();
             Property(x => x.CreatedBy).HasColumnName(@"CreatedBy").HasColumnType("bigint").IsOptional();
             
         }

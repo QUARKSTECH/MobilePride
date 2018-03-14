@@ -14,7 +14,7 @@ namespace MobilePride.Data.Migrations
         protected override void Seed(MobilePrideContext context)
         {
             //// create users
-            //context.UserSet.AddOrUpdate(GenerateAdminUser());
+            context.UserSet.AddOrUpdate(GenerateAdminUser());
             // create roles
             context.RoleSet.AddOrUpdate(GenerateRoles());
           
@@ -64,6 +64,7 @@ namespace MobilePride.Data.Migrations
             var users = new[]{
                 new User()
                 {
+                    //KeyId=Guid.NewGuid(),
                     Username="admin@yopmail.com",
                     Email="admin@yopmail.com",
                     HashedPassword="",

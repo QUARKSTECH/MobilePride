@@ -14,7 +14,7 @@ namespace MobilePride.Entity
         }
 
         public long RoleId { get; set; }
-        public Guid KeyId { get; set; } = Guid.NewGuid();
+        public Guid KeyId { get; set; } 
         public string RoleName { get; set; } 
 
         //Relationship
