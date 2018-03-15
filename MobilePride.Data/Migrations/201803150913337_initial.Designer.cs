@@ -13,7 +13,7 @@ namespace MobilePride.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201803141048160_initial"; }
+            get { return "201803150913337_initial"; }
         }
         
         string IMigrationMetadata.Source

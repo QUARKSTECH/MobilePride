@@ -6,7 +6,7 @@ using MobilePride.Entity;
 
 namespace MobilePride.Data
 {
-    public class MobilePrideContext : IdentityDbContext<IdentityUser>
+    public class MobilePrideContext : DbContext//IdentityDbContext<IdentityUser>
     {
         public MobilePrideContext()
             : base("MobilePride")
