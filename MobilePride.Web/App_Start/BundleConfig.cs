@@ -22,7 +22,14 @@ namespace MobilePride.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/style.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Vendor").Include(
+                      "~/Scripts/vendor/angular.js",
+                      "~/Scripts/vendor/angular-ui-router.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/spa").Include(
+                "~/Scripts/spa/app.js"));
         }
     }
 }
